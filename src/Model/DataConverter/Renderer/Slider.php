@@ -73,7 +73,7 @@ class Slider implements RendererInterface
             }
         }
 
-        $item['slides'] = $childItems;
+        $item['items'] = $childItems;
 
         return $item;
     }

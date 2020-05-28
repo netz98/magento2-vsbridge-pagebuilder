@@ -79,6 +79,12 @@ class TemplatePlugin
         );
 
         $content = str_replace(
+            "\"Magento\CatalogWidget\Block\Product\ProductsList\" template=\"Magento_PageBuilder::catalog/product/widget/content/carousel.phtml",
+            "\"Divante\VsbridgePageBuilder\Block\Widget\Product\ProductsList\" template=\"Divante_VsbridgePageBuilder::product/widget/carousel.phtml",
+            $content
+        );
+
+        $content = str_replace(
             "Magento_PageBuilder::widget/link_href.phtml",
             "Divante_VsbridgePageBuilder::widget/link.phtml",
             $content

@@ -63,10 +63,39 @@ class Banner implements RendererInterface
                 $bannerSettings['link_settings'] = $settings['link_settings'];
             }
 
+            // extra min-height
+            $xpath = new \DOMXPath($domDocument);
+            $overlayNode = $this->getOverlayNode($xpath, $node);
+            if ($overlayNode) {
+                $style = $this->attributeProcessor->getAttributeValue($overlayNode, 'style');
+                $styles = explode(';', $style);
+
+                foreach ($styles as $style) {
+                    if (strpos($style, 'min-height')) {
+                        $bannerSettings['style'] = $bannerSettings['style'] . $style . ';';
+                        break;
+                    }
+                }
+            }
+
+            // apply settings
             $item['banner_settings'] = $bannerSettings;
         }
 
         return $item;
+    }
+
+    /**
+     * @param \DOMXPath $xpath
+     * @param \DOMElement $node
+     *
+     * @return \DOMElement
+     */
+    private function getOverlayNode(\DOMXPath $xpath, \DOMElement $node)
+    {
+        $content = $xpath->query('.//*[@data-element="overlay"]', $node);
+
+        return $content->item(0);
     }
 
     /**

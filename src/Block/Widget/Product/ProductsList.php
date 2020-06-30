@@ -37,6 +37,7 @@ class ProductsList extends \Magento\CatalogWidget\Block\Product\ProductsList
      * @param \Magento\Rule\Model\Condition\Sql\Builder $sqlBuilder
      * @param \Magento\CatalogWidget\Model\Rule $rule
      * @param \Magento\Widget\Helper\Conditions $conditionsHelper
+     * @param \Magento\Catalog\Api\CategoryRepositoryInterface $categoryRepository
      * @param array $data
      * @param Json|null $json
      * @param LayoutFactory|null $layoutFactory
@@ -51,6 +52,7 @@ class ProductsList extends \Magento\CatalogWidget\Block\Product\ProductsList
         \Magento\Rule\Model\Condition\Sql\Builder $sqlBuilder,
         \Magento\CatalogWidget\Model\Rule $rule,
         \Magento\Widget\Helper\Conditions $conditionsHelper,
+        \Magento\Catalog\Api\CategoryRepositoryInterface $categoryRepository,
         array $data = [],
         Json $json = null,
         LayoutFactory $layoutFactory = null,
@@ -64,6 +66,7 @@ class ProductsList extends \Magento\CatalogWidget\Block\Product\ProductsList
             $sqlBuilder,
             $rule,
             $conditionsHelper,
+            $categoryRepository,
             $data,
             $json,
             $layoutFactory,

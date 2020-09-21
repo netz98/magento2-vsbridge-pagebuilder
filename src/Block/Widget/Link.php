@@ -80,7 +80,9 @@ class Link extends \Magento\Catalog\Block\Widget\Link
 
         if ($rewrite) {
             $requestPath = $rewrite->getRequestPath();
-            $requestPath = mb_substr($requestPath, 0, -strlen($urlSuffix));
+            if(!empty($urlSuffix) && str_contains($requestPath, $urlSuffix)) {
+                $requestPath = mb_substr($requestPath, 0, -strlen($urlSuffix));
+            }
             $data = $this->getAttributes((int)$entityId, $store);
             $data['url_path'] = $requestPath;
         }
